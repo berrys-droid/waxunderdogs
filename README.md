@@ -1,26 +1,33 @@
 # waxunderdogs.com
 
-## current/
-The site as it is live today, recovered from ~/Downloads (saved 2026-08-10).
-- index.html  <- was waxunderdogs-index_2.html (the newest of three)
-- intake.html <- was waxunderdogs-intake_3.html (the newest of four)
-The internal link was rewritten from "waxunderdogs-intake.html" to "intake.html".
-These are single-file pages: all CSS, JS and images are inline. No build step.
+Static site. No build step — every page is a single self-contained HTML file
+with its CSS, JS and images inline.
 
-## proposed/
-The rewrite drafted 2026-09-04 - label positioning, the disclosure standard,
-the artist roster door, the studio, and a press kit page.
-- index.html
-- press.html
-Placeholder links to fill in: /services and /intake.
+## Deployed
 
-Nothing here has been deployed. Deploy is manual.
+| File | URL |
+|---|---|
+| `index.html` | `/` — the storefront, live since 10 Aug 2026 |
+| `intake.html` | `/intake` — the commission intake flow |
+| `press.html`  | `/press` — press kit (added 4 Sep 2026) |
 
-## Where this came from
-The live pages were recovered from ~/Downloads, where they had been saved as
-browser downloads on 2026-08-10 - there was no project folder and no git repo.
-Originals remain in ~/Downloads untouched.
+`vercel.json` sets `cleanUrls`, so `/press` serves `press.html` without the
+extension.
 
-## Suggested next step
-    cd ~/waxunderdogs && git init && git add -A && git commit -m "Recover live site; add proposed rewrite"
-Then connect it to the Vercel project so the next deploy has a history.
+## Not deployed
+
+`drafts/home.html` — the proposed rewrite of the home page (label positioning,
+disclosure standard, artist roster, studio). Excluded from deployment by
+`.vercelignore`, so it is not reachable on the live site. Two placeholder links
+inside it still need real targets: `/services` and `/intake`.
+
+## History
+
+The live pages had no repository. They were recovered on 5 Sep 2026 from
+browser downloads in `~/Downloads` dated 10 Aug 2026, and committed as
+`current/` and `proposed/` in commit `fad9e0f`. That commit is still the
+archive — those folders were flattened to the root afterwards, so the originals
+are recoverable with `git show fad9e0f:current/index.html`.
+
+⚠️ The recovered pages are an August snapshot. If the live site was edited on
+Vercel after 10 Aug, this repo is behind it — diff before overwriting.
