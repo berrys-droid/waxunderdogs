@@ -166,7 +166,7 @@ footer{background:var(--ink);color:#a99e93;padding:30px 0;font-size:13px;text-al
         <option>Pet tribute</option>
         <option>Just because</option>
         <option>Artist submission (The Label)</option>
-        <option>Something else</option>
+        <option>I love you</option><option>Mother's Day</option><option>Father's Day</option><option>Graduation</option><option>Missing someone</option><option>Thank you</option><option>I'm sorry</option><option>Something else</option>
       </select>
       <div class="err" id="e-occasion">Let us know the occasion.</div>
       <div class="grief" id="griefNote">💛 We handle memorial and preserved-voice work slowly and gently. There are no wrong answers below — share only what feels right, and we'll reach out personally before anything is produced.</div>
@@ -392,5 +392,21 @@ form.addEventListener('submit',function(ev){
     .finally(function(){ btn.disabled=false; btn.textContent=label; });
 });
 </script>
-</body>
+<script>
+/* pre-select the occasion when arriving from a tile on the home page */
+(function(){
+  try{
+    var want = new URLSearchParams(location.search).get('occasion');
+    if(!want) return;
+    var sel = document.getElementById('occasion'); if(!sel) return;
+    for (var i=0;i<sel.options.length;i++){
+      if (sel.options[i].text.trim().toLowerCase() === want.trim().toLowerCase()){
+        sel.selectedIndex = i;
+        sel.dispatchEvent(new Event('change',{bubbles:true}));
+        break;
+      }
+    }
+  }catch(e){}
+})();
+</script></body>
 </html>
