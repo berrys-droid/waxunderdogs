@@ -295,21 +295,25 @@ a.occ:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
 .founder p{margin:0 0 10px;color:var(--ink-2);font-size:15px;line-height:1.6;max-width:60ch}
 .founder-links{font-size:14px}
 @media (max-width:640px){.founder{grid-template-columns:1fr}.founder img{width:112px;height:112px}}
+</style><style>
+.label-band{background:#3a2a3f;color:#efe6ea}
+.label-band .kicker{color:#e0b878 !important}
+.lb{display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px;align-items:center;max-width:880px}
+.lb img{width:220px;border-radius:8px;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.lb h3{font-family:var(--serif);font-size:30px;font-weight:600;margin:6px 0 12px;color:#fff;letter-spacing:-.015em}
+.lb p{margin:0 0 12px;color:#d9cbd2;font-size:15.5px;line-height:1.6;max-width:58ch}
+.lb em{color:#fff;font-style:italic}
+.lb .btn{margin-top:6px;background:#f6e4c8;color:#2a1704}
+.lb .btn:hover{background:#fff}
+@media (max-width:700px){.lb{grid-template-columns:1fr;gap:20px}.lb img{width:160px}}
 </style></head>
 <body>
 
 <header class="nav">
   <div class="wrap nav-inner">
     <a href="#top" class="brand"><span class="mark " role="img" aria-label="waxunderdogs"></span>wax<b>underdogs</b></a>
-    <nav class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#menu">The menu</a>
-      <a href="#occasions">Occasions</a>
-      <a href="#catalog">Catalog</a>
-      <a href="#albums">Albums</a>
-      <a href="#submit">Submit</a>
-    </nav>
-    <a href="/intake" class="btn btn-amber">Make a song</a>
+    <nav class="nav-links"><a href="#occasions">Occasions</a> <a href="#how">How it works</a> <a href="#menu">Pricing</a> <a href="#catalog">Catalog</a> <a href="/label">The label</a> <a href="#submit">Submit</a></nav>
+    <a href="#occasions" class="btn btn-amber">Find your moment</a>
     <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').style.display='flex';this.style.display='none'"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -395,6 +399,33 @@ a.occ:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
   </div>
 </section>
 
+<section class="sec" id="occasions">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">What people order</div>
+      <h2 class="sec-title">A song for the moment you can't put into words.</h2>
+    </div>
+    <div class="occ-grid"><a class="occ" href="/intake?occasion=Milestone%20birthday"><span class="tag">Birthdays</span><img class="shot" src="art/occasions/birthday.jpg" alt="Milestone birthdays" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Milestone birthdays</h4><p>40, 50, 70, 80 — a song that names the whole life, not a generic card.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Wedding%20/%20first%20dance"><span class="tag">Weddings</span><img class="shot" src="art/occasions/wedding.jpg" alt="Weddings &amp; first dances" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Weddings &amp; first dances</h4><p>Your story as an original — plus a group-gift page the wedding party can fund together.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Anniversary"><span class="tag">Anniversaries</span><img class="shot" src="art/occasions/anniversary.jpg" alt="Anniversaries" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Anniversaries</h4><p>A decade in six tracks, or one song for the year you both remember.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=I%20love%20you"><span class="tag">Just because</span><img class="shot" src="art/occasions/love.jpg" alt="I love you" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>I love you</h4><p>No occasion at all. Sometimes that is the whole reason.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Mother%27s%20Day"><span class="tag">Mother's Day</span><img class="shot" src="art/occasions/mothersday.jpg" alt="For Mom" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>For Mom</h4><p>Her life in her own details — the phrases, the kitchen, the drive to school.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Father%27s%20Day"><span class="tag">Father's Day</span><img class="shot" src="art/occasions/fathersday.jpg" alt="For Dad" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>For Dad</h4><p>The workshop, the truck, the advice he kept repeating. A song that sounds like him.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=New%20baby%20/%20baby%27s%20first%20year"><span class="tag">New baby</span><img class="shot" src="art/occasions/baby.jpg" alt="Baby's first year" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Baby's first year</h4><p>A lullaby mini-album, or one new song a quarter through year one.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Graduation"><span class="tag">Graduation</span><img class="shot" src="art/occasions/graduation.jpg" alt="Graduations" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Graduations</h4><p>Eighteen years in one song, handed over on the day it ends.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Memorial%20/%20tribute"><span class="tag">Memorial</span><img class="shot" src="art/occasions/memorial.jpg" alt="Memorials &amp; tributes" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Memorials &amp; tributes</h4><p>A song for the service and a preserved-voice keepsake for the family. Priced gently, handled with care.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Missing%20someone"><span class="tag">Missing you</span><img class="shot" src="art/occasions/missing.jpg" alt="Missing someone" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Missing someone</h4><p>Distance, deployment, or a year that got away from you.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Thank%20you"><span class="tag">Thank you</span><img class="shot" src="art/occasions/thankyou.jpg" alt="Thank you" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Thank you</h4><p>For the person who showed up — the nurse, the neighbour, the friend who drove.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=I%27m%20sorry"><span class="tag">Apology</span><img class="shot" src="art/occasions/sorry.jpg" alt="I'm sorry" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>I'm sorry</h4><p>Harder to write than a card, and it lands differently when it's sung.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Pet%20tribute"><span class="tag">Pet tribute</span><img class="shot" src="art/occasions/pet.jpg" alt="Pet tributes" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Pet tributes</h4><p>A small, warm song for the one who was family too.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Voicemail%20rescue%20/%20preserve%20a%20voice"><span class="tag">Voicemail</span><img class="shot" src="art/occasions/voicemail.jpg" alt="Voicemail rescue" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Voicemail rescue</h4><p>Before you delete that voicemail — we clean it, preserve it, and turn it into something you keep.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Just%20because"><span class="tag">No occasion</span><img class="shot" src="art/occasions/justbecause.jpg" alt="Just because" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Just because</h4><p>“For my mom.” No date, no reason. Those are often the best ones.</p><span class="go">Start this song &rarr;</span></div></a></div>
+  </div>
+</section>
+
+
+<section class="sec founder-sec"><div class="wrap">
+  <div class="founder">
+    <img src="art/portrait.jpg" alt="Christian Berry" loading="lazy">
+    <div>
+      <div class="kicker">Who you're actually hiring</div>
+      <h3>One person, in Melbourne, Florida.</h3>
+      <p>I'm Christian Berry. I write the words myself, from what you send me — the names, the phrases,
+      the year that mattered. The music is produced with AI, and I say so everywhere, including on my own
+      records.</p>
+      <p>We're new, so there are no customer reviews yet. That's exactly why the founding prices are what
+      they are, and why you'll get a first direction back within a day rather than a queue number.
+      You deal with me, not a marketplace.</p>
+      <p class="founder-links"><a href="/label">Hear my own records</a> · <a href="mailto:chris@waxunderdogs.com">chris@waxunderdogs.com</a></p>
+    </div>
+  </div>
+</div></section>
 <section class="sec menu-sec" id="menu">
   <div class="wrap">
     <div class="sec-head">
@@ -436,33 +467,6 @@ a.occ:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
   </div>
 </section>
 
-<section class="sec" id="occasions">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="kicker">What people order</div>
-      <h2 class="sec-title">A song for the moment you can't put into words.</h2>
-    </div>
-    <div class="occ-grid"><a class="occ" href="/intake?occasion=Milestone%20birthday"><span class="tag">Birthdays</span><img class="shot" src="art/occasions/birthday.jpg" alt="Milestone birthdays" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Milestone birthdays</h4><p>40, 50, 70, 80 — a song that names the whole life, not a generic card.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Wedding%20/%20first%20dance"><span class="tag">Weddings</span><img class="shot" src="art/occasions/wedding.jpg" alt="Weddings &amp; first dances" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Weddings &amp; first dances</h4><p>Your story as an original — plus a group-gift page the wedding party can fund together.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Anniversary"><span class="tag">Anniversaries</span><img class="shot" src="art/occasions/anniversary.jpg" alt="Anniversaries" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Anniversaries</h4><p>A decade in six tracks, or one song for the year you both remember.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=I%20love%20you"><span class="tag">Just because</span><img class="shot" src="art/occasions/love.jpg" alt="I love you" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>I love you</h4><p>No occasion at all. Sometimes that is the whole reason.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Mother%27s%20Day"><span class="tag">Mother's Day</span><img class="shot" src="art/occasions/mothersday.jpg" alt="For Mom" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>For Mom</h4><p>Her life in her own details — the phrases, the kitchen, the drive to school.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Father%27s%20Day"><span class="tag">Father's Day</span><img class="shot" src="art/occasions/fathersday.jpg" alt="For Dad" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>For Dad</h4><p>The workshop, the truck, the advice he kept repeating. A song that sounds like him.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=New%20baby%20/%20baby%27s%20first%20year"><span class="tag">New baby</span><img class="shot" src="art/occasions/baby.jpg" alt="Baby's first year" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Baby's first year</h4><p>A lullaby mini-album, or one new song a quarter through year one.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Graduation"><span class="tag">Graduation</span><img class="shot" src="art/occasions/graduation.jpg" alt="Graduations" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Graduations</h4><p>Eighteen years in one song, handed over on the day it ends.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Memorial%20/%20tribute"><span class="tag">Memorial</span><img class="shot" src="art/occasions/memorial.jpg" alt="Memorials &amp; tributes" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Memorials &amp; tributes</h4><p>A song for the service and a preserved-voice keepsake for the family. Priced gently, handled with care.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Missing%20someone"><span class="tag">Missing you</span><img class="shot" src="art/occasions/missing.jpg" alt="Missing someone" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Missing someone</h4><p>Distance, deployment, or a year that got away from you.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Thank%20you"><span class="tag">Thank you</span><img class="shot" src="art/occasions/thankyou.jpg" alt="Thank you" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Thank you</h4><p>For the person who showed up — the nurse, the neighbour, the friend who drove.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=I%27m%20sorry"><span class="tag">Apology</span><img class="shot" src="art/occasions/sorry.jpg" alt="I'm sorry" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>I'm sorry</h4><p>Harder to write than a card, and it lands differently when it's sung.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Pet%20tribute"><span class="tag">Pet tribute</span><img class="shot" src="art/occasions/pet.jpg" alt="Pet tributes" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Pet tributes</h4><p>A small, warm song for the one who was family too.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Voicemail%20rescue%20/%20preserve%20a%20voice"><span class="tag">Voicemail</span><img class="shot" src="art/occasions/voicemail.jpg" alt="Voicemail rescue" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Voicemail rescue</h4><p>Before you delete that voicemail — we clean it, preserve it, and turn it into something you keep.</p><span class="go">Start this song &rarr;</span></div></a><a class="occ" href="/intake?occasion=Just%20because"><span class="tag">No occasion</span><img class="shot" src="art/occasions/justbecause.jpg" alt="Just because" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Just because</h4><p>“For my mom.” No date, no reason. Those are often the best ones.</p><span class="go">Start this song &rarr;</span></div></a></div>
-  </div>
-</section>
-
-
-<section class="sec founder-sec"><div class="wrap">
-  <div class="founder">
-    <img src="art/portrait.jpg" alt="Christian Berry" loading="lazy">
-    <div>
-      <div class="kicker">Who you're actually hiring</div>
-      <h3>One person, in Melbourne, Florida.</h3>
-      <p>I'm Christian Berry. I write the words myself, from what you send me — the names, the phrases,
-      the year that mattered. The music is produced with AI, and I say so everywhere, including on my own
-      records.</p>
-      <p>We're new, so there are no customer reviews yet. That's exactly why the founding prices are what
-      they are, and why you'll get a first direction back within a day rather than a queue number.
-      You deal with me, not a marketplace.</p>
-      <p class="founder-links"><a href="/label">Hear my own records</a> · <a href="mailto:chris@waxunderdogs.com">chris@waxunderdogs.com</a></p>
-    </div>
-  </div>
-</div></section>
 <section class="sec cat-sec" id="catalog">
   <div class="wrap">
     <div class="sec-head" style="margin-left:auto;margin-right:auto;text-align:center">
@@ -480,6 +484,21 @@ a.occ:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
   </div>
 </section>
 
+
+<section class="sec label-band"><div class="wrap">
+  <div class="lb">
+    <img src="art/watchfires.jpg" alt="Watchfires EP cover art" loading="lazy">
+    <div>
+      <div class="kicker">The label</div>
+      <h3>We put out our own records, too.</h3>
+      <p>Wax Underdogs is a label as well as a studio. Christian's own songs — devotional folk-soul,
+      four singles through the autumn and an EP called <em>Watchfires</em> — come out under it, credited
+      the same way everything here is: element by element, human parts and machine parts named.</p>
+      <p>If you make AI-assisted music and you're willing to say how, the door is open.</p>
+      <a class="btn btn-primary" href="/label">Hear the records &nbsp;→</a>
+    </div>
+  </div>
+</div></section>
 <section class="sec albums-sec" id="albums">
   <div class="wrap">
     <div class="sec-head">
