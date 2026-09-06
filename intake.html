@@ -112,7 +112,12 @@ footer{background:var(--ink);color:#a99e93;padding:30px 0;font-size:13px;text-al
   .step{padding:22px 18px}
 }
 </style>
-</head>
+<style>
+.phase-break{background:var(--amber-soft) !important;border-left:3px solid var(--amber) !important}
+.phase-break h3{margin:0}
+.phase-p{margin:8px 0 0;font-size:14.5px;line-height:1.55;color:var(--ink-2);max-width:62ch}
+.btn-book{margin-top:14px}
+</style></head>
 <body>
 
 <header class="nav">
@@ -149,9 +154,8 @@ footer{background:var(--ink);color:#a99e93;padding:30px 0;font-size:13px;text-al
         <label class="pkg"><input type="radio" name="pkg" value="The Label — from $99/track">
           <span class="box"><span class="t"><b>The Label</b><span class="p">$99+</span></span><small>Send your lyrics/hook — we produce &amp; release it.</small></span></label>
       </div>
-    </div>
-
-    <div class="step">
+    </div
+<div class="step">
       <div class="step-h"><span class="n">02</span><h2>The occasion</h2></div>
       <label class="fl" for="occasion">What's this for? <span class="req">*</span></label>
       <select id="occasion" name="occasion" required>
@@ -174,9 +178,8 @@ footer{background:var(--ink);color:#a99e93;padding:30px 0;font-size:13px;text-al
       <label class="fl" for="needed">Needed by</label>
       <div class="hint">A date, an event, or "no rush." Rush delivery is available if it's close.</div>
       <input type="date" id="needed" name="needed">
-    </div>
-
-    <div class="step">
+    </div
+<div class="step">
       <div class="step-h"><span class="n">03</span><h2>Who is the song for?</h2></div>
       <div class="row">
         <div><label class="fl" for="subject">Their name <span class="req">*</span></label>
@@ -188,13 +191,34 @@ footer{background:var(--ink);color:#a99e93;padding:30px 0;font-size:13px;text-al
       <label class="fl" for="names">Other names to include</label>
       <div class="hint">Kids, a spouse, a nickname, a pet — anyone who should appear in the words.</div>
       <input type="text" id="names" name="names" placeholder="e.g. Tommy, Grandma Rose, the dog Biscuit">
-    </div>
+    </div
+<div class="step">
+      <div class="step-h"><span class="n">08</span><h2>Where do we send it?</h2></div>
+      <div class="row">
+        <div><label class="fl" for="cname">Your name <span class="req">*</span></label>
+          <input type="text" id="cname" name="cname" required>
+          <div class="err" id="e-cname">We'll need a name for the order.</div></div>
+        <div><label class="fl" for="email">Your email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" required placeholder="you@email.com">
+          <div class="err" id="e-email">A valid email so we can send drafts.</div></div>
+      </div>
+      <label class="fl" for="notes">Anything else?</label>
+      <textarea id="notes" name="notes" style="min-height:70px" placeholder="Budget, questions, how you found us…"></textarea>
+    </div
 
-    <div class="step">
+<div class="step phase-break">
+  <div class="step-h"><span class="step-n">✓</span><h3>That's everything we need to book it</h3></div>
+  <p class="phase-p">You can send now and we'll email you a guided questionnaire to fill in over the next few days —
+  most people find the story easier to write in two or three sittings than in one go.</p>
+  <p class="phase-p"><b>Or keep going below</b> if you'd rather do it all in one pass. Everything from here down is optional.</p>
+  <button type="submit" class="btn btn-book">Book it — I'll send the story later &nbsp;→</button>
+</div>
+
+<div class="step">
       <div class="step-h"><span class="n">04</span><h2>Their story</h2></div>
       <label class="fl" for="story">Tell us about them <span class="req">*</span></label>
       <div class="hint">Who are they? What are the moments, the inside jokes, the sayings, the hard parts and the good ones? Write it messy — we'll shape it.</div>
-      <textarea id="story" name="story" required placeholder="Start anywhere. The time he… / She always said… / We met when…"></textarea>
+      <textarea id="story" name="story" placeholder="Start anywhere. The time he… / She always said… / We met when…"></textarea>
       <div class="err" id="e-story">A few lines here is what makes the song theirs.</div>
 
       <label class="fl" for="moments">Key moments &amp; dates</label>
@@ -203,9 +227,8 @@ footer{background:var(--ink);color:#a99e93;padding:30px 0;font-size:13px;text-al
 
       <label class="fl" for="mustsay">Lines or phrases that must be in it</label>
       <input type="text" id="mustsay" name="mustsay" placeholder='e.g. "you got this, kid"'>
-    </div>
-
-    <div class="step">
+    </div
+<div class="step">
       <div class="step-h"><span class="n">05</span><h2>How should it sound?</h2><span class="opt">pick any</span></div>
       <label class="fl">Mood &amp; genre</label>
       <div class="chips" id="genreChips">
@@ -222,9 +245,8 @@ footer{background:var(--ink);color:#a99e93;padding:30px 0;font-size:13px;text-al
       </div>
       <label class="fl" for="refs" style="margin-top:20px">A song or artist it should feel like</label>
       <input type="text" id="refs" name="refs" placeholder="e.g. like a slow Johnny Cash / anything Adele">
-    </div>
-
-    <div class="step">
+    </div
+<div class="step">
       <div class="step-h"><span class="n">06</span><h2>Voice clips &amp; photos</h2><span class="opt">optional</span></div>
       <label class="fl">A real voice — a voicemail, a voice memo, "happy birthday" on an old machine</label>
       <div class="hint">We can clean it up and weave it into the track. This is what makes a Keepsake hit hardest.</div>
@@ -232,9 +254,8 @@ footer{background:var(--ink);color:#a99e93;padding:30px 0;font-size:13px;text-al
       <label class="fl" style="margin-top:16px">Photos (for context — helps us feel the person)</label>
       <div class="file"><span class="ico">📷</span><input type="file" id="photos" name="photos" accept="image/*" multiple></div>
       <div class="hint" style="margin-top:8px">By adding a voice clip you confirm you have the right to use it. For memorial &amp; preserved-voice work, we confirm this with you directly.</div>
-    </div>
-
-    <div class="step">
+    </div
+<div class="step">
       <div class="step-h"><span class="n">07</span><h2>Add-ons</h2><span class="opt">optional</span></div>
       <div class="chips">
         <label class="chip"><input type="checkbox" name="addons" value="72-hour rush (+$79)"><span>72-hour rush · +$79</span></label>
@@ -246,22 +267,8 @@ footer{background:var(--ink);color:#a99e93;padding:30px 0;font-size:13px;text-al
       </div>
     </div>
 
-    <div class="step">
-      <div class="step-h"><span class="n">08</span><h2>Where do we send it?</h2></div>
-      <div class="row">
-        <div><label class="fl" for="cname">Your name <span class="req">*</span></label>
-          <input type="text" id="cname" name="cname" required>
-          <div class="err" id="e-cname">We'll need a name for the order.</div></div>
-        <div><label class="fl" for="email">Your email <span class="req">*</span></label>
-          <input type="email" id="email" name="email" required placeholder="you@email.com">
-          <div class="err" id="e-email">A valid email so we can send drafts.</div></div>
-      </div>
-      <label class="fl" for="notes">Anything else?</label>
-      <textarea id="notes" name="notes" style="min-height:70px" placeholder="Budget, questions, how you found us…"></textarea>
-    </div>
-
     <div class="submit-row">
-      <button type="submit" class="btn">Send my brief &nbsp;→</button>
+      <button type="submit" class="btn">Send everything &nbsp;→</button>
       <span class="submit-note">No payment yet — we reply within a day with next steps and a first direction.</span>
     </div>
   </form>
