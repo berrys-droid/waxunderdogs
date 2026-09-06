@@ -77,14 +77,17 @@ header{position:sticky;top:0;z-index:60;background:rgba(250,247,242,.86);backdro
     repeating-radial-gradient(circle at 50% 50%, #241a12 0 1.5px, #17100a 1.5px 3px);
   box-shadow:var(--shadow-lg),0 0 0 1px rgba(0,0,0,.35);transition:transform .25s}
 .record:hover{transform:scale(1.02)}
-.record::before{content:"";position:absolute;inset:34%;border-radius:50%;background:url('art/record-label.png') center/cover no-repeat,var(--amber);box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.record::before{content:"";position:absolute;inset:31%;border-radius:50%;background:url('art/record-label.png') center/cover no-repeat,var(--amber);box-shadow:0 0 0 1px rgba(0,0,0,.45),inset 0 0 14px rgba(0,0,0,.18)}
 .record::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--paper);z-index:3}
-.record .cue{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:56px;height:56px;border-radius:50%;background:rgba(250,247,242,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.3)}
-.record .cue svg{width:20px;height:20px;fill:var(--ink);margin-left:2px}
+.record-wrap{position:relative}
+.rec-holder{position:relative;display:inline-block}
+.cue{position:absolute;right:-6px;bottom:4px;z-index:4;width:58px;height:58px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -8px rgba(23,19,16,.55),0 0 0 5px var(--paper);pointer-events:none;transition:background .2s}
+.cue svg{width:20px;height:20px;fill:#fff;margin-left:3px}
+.cue.on{background:var(--ink)}
+.cue.on svg{margin-left:0}
 .record.playing{animation:spin 3.4s linear infinite}
-.record.playing .cue{opacity:0}
 @keyframes spin{to{transform:rotate(360deg)}}
-.rec-cap{margin-top:22px;font-size:15px;color:var(--ink-2)}
+.rec-cap{margin-top:30px;font-size:15px;color:var(--ink-2)}
 .rec-cap b{font-weight:600;color:var(--ink)}
 .rec-cap .ex{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-deep);background:var(--amber-soft);border-radius:999px;padding:3px 9px;margin-left:6px;vertical-align:1px}
 .rec-hint{margin-top:9px;font-size:13px;color:var(--ink-3)}
@@ -211,9 +214,10 @@ footer a{color:var(--ink-2)}
     <a href="#prices" class="btn btn-dark">Start a song &nbsp;&rarr;</a>
 
     <div class="record-wrap">
-      <button class="record" id="rec" aria-label="Play a sample">
-        <span class="cue"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-      </button>
+      <span class="rec-holder">
+        <button class="record" id="rec" aria-label="Play a sample"></button>
+        <span class="cue" id="cue"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
       <p class="rec-cap"><b>Ninety Summers</b> — folk, written for a 90th<span class="ex">example</span></p>
       <p class="rec-hint">Tap the record to hear it.</p>
     </div>
@@ -349,7 +353,9 @@ function closeSheet(){document.getElementById('sheet').classList.remove('open')}
 
 /* one audio element for the whole page */
 var A=new Audio(), curBtn=null;
-function stopAll(){document.querySelectorAll('.record,.track').forEach(function(e){e.classList.remove('playing','on')});curBtn=null}
+var PLAY='<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+var PAUSE='<svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
+function stopAll(){document.querySelectorAll('.record,.track').forEach(function(e){e.classList.remove('playing','on')});var c=document.getElementById('cue');c.classList.remove('on');c.innerHTML=PLAY;curBtn=null}
 A.addEventListener('ended',stopAll);
 A.addEventListener('pause',function(){if(A.currentTime===0)stopAll()});
 function play(src,el,cls){
@@ -357,7 +363,12 @@ function play(src,el,cls){
   stopAll();A.src=src;A.currentTime=0;
   A.play().then(function(){el.classList.add(cls);curBtn=el}).catch(function(){});
 }
-document.getElementById('rec').addEventListener('click',function(){play('audio/ninety-summers.mp3',this,'playing')});
+document.getElementById('rec').addEventListener('click',function(){
+  var was=curBtn===this;
+  play('audio/ninety-summers.mp3',this,'playing');
+  var c=document.getElementById('cue');
+  if(!was){c.classList.add('on');c.innerHTML=PAUSE}
+});
 
 var CAT=[
  {t:"The Long Way Home", a:"example · soul", g:"Soul", s:"audio/long-way-home.mp3"},
