@@ -11,7 +11,8 @@ with its CSS, JS and images inline.
 | `label.html` | `/label` — the label home page, rebuilt 6 Sep in the storefront's own design system |
 | `intake.html` | `/intake` — the commission brief form |
 | `press.html`  | `/press` — press kit |
-| `art/*` | covers, wordmark, portrait |
+| `art/*` | covers, wordmark, portrait, `record-label.png` |
+| `art/occasions/*` | 15 photographic occasion tiles on `/` |
 | `audio/*.mp3` | 7 commission examples for `/studio`, plus `hold.mp3` for the label page |
 
 ### The label page
@@ -47,3 +48,23 @@ project link and a `deploy.sh`. That is what this repo now holds.
 Vercel project: `waxunderdogs-site` (`prj_hdO49OTMiM97uJivNCfvXtQQi2bf`).
 Previously deployed by `vercel deploy --prod` from that folder; now deployed
 from this repo on push.
+
+
+## Homepage redesign — 6 Sep 2026
+
+Two changes to `index.html`, both additive:
+
+1. **The record is the play button.** `.play-btn`, `.tplay` and `.album-play`
+   all render as a vinyl disc — grooves in CSS, the Wax Underdogs badge as the
+   centre label, a paper-coloured spindle hole. It spins while audio plays and
+   stops when it pauses; the icon counter-rotates so it stays upright. Wiring
+   is a single delegated script at the end of the file that patches
+   `HTMLMediaElement.play/pause`, so it works for every player on the page
+   without touching the existing playback code.
+2. **Occasions are photographs, not emoji.** The eight emoji cards became 15
+   photo tiles (`art/occasions/`), each with a gradient veil, a corner tag and
+   white type over the image. Added: Mother's Day, Father's Day, graduation,
+   missing someone, thank you, apology, I love you.
+
+Backup of the previous homepage: `/tmp/index.backup.html` on the Mac (not in git;
+the previous version is in the history as of commit `02dc9d5`).

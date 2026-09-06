@@ -227,6 +227,51 @@ footer{background:var(--ink);color:#c9beb4;padding:60px 0 34px;font-size:14.5px}
   .track .tbar{display:none}
 }
 </style>
+<style>
+/* --- Wax Underdogs record: the play button, site-wide --- */
+.play-btn,.tplay,.album-play{
+  position:relative;background:#1b120b !important;color:#fff !important;border:0;overflow:hidden;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.10) 0 1px, transparent 1px),
+    repeating-radial-gradient(circle at 50% 50%, #241a12 0 1.5px, #17100a 1.5px 3px) !important;
+  box-shadow:0 2px 10px -3px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.07);
+}
+.play-btn::before,.tplay::before,.album-play::before{
+  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:46%;height:46%;border-radius:50%;
+  background:url('art/record-label.png') center/cover no-repeat,#d98a2b;
+  box-shadow:0 0 0 1px rgba(0,0,0,.45);
+}
+.play-btn::after,.tplay::after,.album-play::after{
+  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:11%;height:11%;border-radius:50%;background:#faf7f2;z-index:3;
+}
+.play-btn>*,.tplay>*,.album-play>*{position:relative;z-index:2;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.6));color:#fff}
+.play-btn.is-playing,.tplay.is-playing,.album-play.is-playing{animation:waxspin 3.2s linear infinite}
+@keyframes waxspin{to{transform:rotate(360deg)}}
+@keyframes waxspinrev{to{transform:rotate(-360deg)}}
+.is-playing>svg{animation:waxspinrev 3.2s linear infinite}
+.album-play.is-playing{animation:waxspin 3.2s linear infinite}
+@media (prefers-reduced-motion:reduce){.is-playing{animation:none !important}}
+
+/* --- occasion tiles: photographs, not emoji --- */
+.occ{position:relative;overflow:hidden;border-radius:14px;padding:0 !important;border:0 !important;
+  box-shadow:0 1px 2px rgba(23,19,16,.06),0 16px 34px -22px rgba(23,19,16,.5);background:#1b120b}
+.occ .shot{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;
+  transition:transform .5s cubic-bezier(.2,.6,.2,1);filter:saturate(1.05)}
+.occ:hover .shot,.occ:focus-within .shot{transform:scale(1.055)}
+.occ .veil{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(20,12,6,0) 34%,rgba(20,12,6,.55) 62%,rgba(20,12,6,.9) 100%)}
+.occ .txt{position:absolute;left:0;right:0;bottom:0;padding:16px 16px 17px;color:#fff}
+.occ h4{margin:0 0 4px;color:#fff !important;font-size:17px;line-height:1.2;
+  text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.occ p{margin:0;color:rgba(255,255,255,.9) !important;font-size:13px;line-height:1.45;
+  text-shadow:0 1px 6px rgba(0,0,0,.55)}
+.occ .tag{position:absolute;left:12px;top:12px;z-index:2;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;padding:5px 9px;border-radius:99px;color:#2a1c0c;background:rgba(255,255,255,.92);font-weight:600}
+.occ-grid{grid-template-columns:repeat(auto-fit,minmax(238px,1fr)) !important;gap:18px !important}
+</style>
 </head>
 <body>
 
@@ -374,16 +419,7 @@ footer{background:var(--ink);color:#c9beb4;padding:60px 0 34px;font-size:14.5px}
       <div class="kicker">What people order</div>
       <h2 class="sec-title">A song for the moment you can't put into words.</h2>
     </div>
-    <div class="occ-grid">
-      <div class="occ"><span class="ico">🎂</span><h4>Milestone birthdays</h4><p>40, 50, 70, 80 — a song that names the whole life, not a generic card.</p></div>
-      <div class="occ"><span class="ico">💍</span><h4>Weddings &amp; first dances</h4><p>Your story as an original — plus a group-gift page the wedding party can fund together.</p></div>
-      <div class="occ"><span class="ico">🕊️</span><h4>Memorials &amp; tributes</h4><p>A song for the service and a preserved-voice keepsake for the family. Priced gently, handled with care.</p></div>
-      <div class="occ"><span class="ico">📼</span><h4>Voicemail rescue</h4><p>Before you delete that voicemail — we clean it, preserve it, and turn it into something you keep.</p></div>
-      <div class="occ"><span class="ico">👶</span><h4>Baby's first year</h4><p>A lullaby mini-album, or one new song a quarter through year one.</p></div>
-      <div class="occ"><span class="ico">💛</span><h4>Anniversaries</h4><p>A decade in six tracks, or one song for the year you both remember.</p></div>
-      <div class="occ"><span class="ico">🐾</span><h4>Pet tributes</h4><p>A small, warm song for the one who was family too.</p></div>
-      <div class="occ"><span class="ico">🎙️</span><h4>Just because</h4><p>No occasion. "For my mom." Sometimes that's the whole reason.</p></div>
-    </div>
+    <div class="occ-grid"><div class="occ"><span class="tag">Birthdays</span><img class="shot" src="art/occasions/birthday.jpg" alt="Milestone birthdays" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Milestone birthdays</h4><p>40, 50, 70, 80 — a song that names the whole life, not a generic card.</p></div></div><div class="occ"><span class="tag">Weddings</span><img class="shot" src="art/occasions/wedding.jpg" alt="Weddings &amp; first dances" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Weddings &amp; first dances</h4><p>Your story as an original — plus a group-gift page the wedding party can fund together.</p></div></div><div class="occ"><span class="tag">Anniversaries</span><img class="shot" src="art/occasions/anniversary.jpg" alt="Anniversaries" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Anniversaries</h4><p>A decade in six tracks, or one song for the year you both remember.</p></div></div><div class="occ"><span class="tag">Just because</span><img class="shot" src="art/occasions/love.jpg" alt="I love you" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>I love you</h4><p>No occasion at all. Sometimes that is the whole reason.</p></div></div><div class="occ"><span class="tag">Mother's Day</span><img class="shot" src="art/occasions/mothersday.jpg" alt="For Mom" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>For Mom</h4><p>Her life in her own details — the phrases, the kitchen, the drive to school.</p></div></div><div class="occ"><span class="tag">Father's Day</span><img class="shot" src="art/occasions/fathersday.jpg" alt="For Dad" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>For Dad</h4><p>The workshop, the truck, the advice he kept repeating. A song that sounds like him.</p></div></div><div class="occ"><span class="tag">New baby</span><img class="shot" src="art/occasions/baby.jpg" alt="Baby's first year" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Baby's first year</h4><p>A lullaby mini-album, or one new song a quarter through year one.</p></div></div><div class="occ"><span class="tag">Graduation</span><img class="shot" src="art/occasions/graduation.jpg" alt="Graduations" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Graduations</h4><p>Eighteen years in one song, handed over on the day it ends.</p></div></div><div class="occ"><span class="tag">Memorial</span><img class="shot" src="art/occasions/memorial.jpg" alt="Memorials &amp; tributes" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Memorials &amp; tributes</h4><p>A song for the service and a preserved-voice keepsake for the family. Priced gently, handled with care.</p></div></div><div class="occ"><span class="tag">Missing you</span><img class="shot" src="art/occasions/missing.jpg" alt="Missing someone" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Missing someone</h4><p>Distance, deployment, or a year that got away from you.</p></div></div><div class="occ"><span class="tag">Thank you</span><img class="shot" src="art/occasions/thankyou.jpg" alt="Thank you" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Thank you</h4><p>For the person who showed up — the nurse, the neighbour, the friend who drove.</p></div></div><div class="occ"><span class="tag">Apology</span><img class="shot" src="art/occasions/sorry.jpg" alt="I'm sorry" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>I'm sorry</h4><p>Harder to write than a card, and it lands differently when it's sung.</p></div></div><div class="occ"><span class="tag">Pet tribute</span><img class="shot" src="art/occasions/pet.jpg" alt="Pet tributes" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Pet tributes</h4><p>A small, warm song for the one who was family too.</p></div></div><div class="occ"><span class="tag">Voicemail</span><img class="shot" src="art/occasions/voicemail.jpg" alt="Voicemail rescue" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Voicemail rescue</h4><p>Before you delete that voicemail — we clean it, preserve it, and turn it into something you keep.</p></div></div><div class="occ"><span class="tag">No occasion</span><img class="shot" src="art/occasions/justbecause.jpg" alt="Just because" loading="lazy" decoding="async"><span class="veil"></span><div class="txt"><h4>Just because</h4><p>“For my mom.” No date, no reason. Those are often the best ones.</p></div></div></div>
   </div>
 </section>
 
@@ -585,6 +621,27 @@ footer{background:var(--ink);color:#c9beb4;padding:60px 0 34px;font-size:14.5px}
       startPlayer(src, null, stopUI);
     });
   });
+})();
+</script>
+
+<script>
+/* Wax record: spin whichever play button started the audio, wherever it lives. */
+(function(){
+  var SEL = '.play-btn,.tplay,.album-play', last = null;
+  function clearAll(){ document.querySelectorAll(SEL).forEach(function(b){ b.classList.remove('is-playing'); }); }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest(SEL);
+    if (b) last = b;
+  }, true);
+  var P = HTMLMediaElement.prototype, play = P.play, pause = P.pause;
+  function bind(el){
+    if (el.__waxBound) return; el.__waxBound = true;
+    el.addEventListener('play',  function(){ clearAll(); if(last) last.classList.add('is-playing'); });
+    el.addEventListener('pause', clearAll);
+    el.addEventListener('ended', clearAll);
+  }
+  P.play  = function(){ bind(this); return play.apply(this, arguments); };
+  P.pause = function(){ bind(this); return pause.apply(this, arguments); };
 })();
 </script>
 </body>
