@@ -285,6 +285,15 @@ a.occ:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
 .howmade b{color:var(--ink)}
 .hm-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--amber-deep);
   margin-right:8px;vertical-align:1px}
+</style><style>
+.founder-sec{background:var(--paper-2)}
+.founder{display:grid;grid-template-columns:148px minmax(0,1fr);gap:26px;align-items:start;max-width:820px}
+.founder img{width:148px;height:148px;border-radius:50%;object-fit:cover;
+  box-shadow:0 1px 2px rgba(23,19,16,.06),0 16px 34px -20px rgba(23,19,16,.5)}
+.founder h3{font-family:var(--serif);font-size:26px;font-weight:600;margin:6px 0 10px;letter-spacing:-.01em}
+.founder p{margin:0 0 10px;color:var(--ink-2);font-size:15px;line-height:1.6;max-width:60ch}
+.founder-links{font-size:14px}
+@media (max-width:640px){.founder{grid-template-columns:1fr}.founder img{width:112px;height:112px}}
 </style></head>
 <body>
 
@@ -390,7 +399,7 @@ a.occ:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
     <div class="sec-head">
       <div class="kicker">The menu</div>
       <h2 class="sec-title">Pick how big the moment is.</h2>
-      <p>Founding prices — a real, made-for-them song for under half what the big custom-song sites charge, while we build our catalog. Going up after our first clients.</p><p class="howmade"><span class="hm-dot"></span><b>How they are made:</b> a real songwriter writes the words from your story — then the music is produced with AI. Any real voice clip you send stays your own recording, used with your consent. We never pass off a synthetic voice as someone's real one.</p>
+      <p>Founding prices — a real, made-for-them song for under half what the big custom-song sites charge, while we build our catalog. These are founding prices while we build the catalogue.</p><p class="howmade"><span class="hm-dot"></span><b>How they are made:</b> a real songwriter writes the words from your story — then the music is produced with AI. Any real voice clip you send stays your own recording, used with your consent. We never pass off a synthetic voice as someone's real one.</p>
     </div>
     <div class="tiers">
       <div class="tier">
@@ -436,12 +445,29 @@ a.occ:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
   </div>
 </section>
 
+
+<section class="sec founder-sec"><div class="wrap">
+  <div class="founder">
+    <img src="art/portrait.jpg" alt="Christian Berry" loading="lazy">
+    <div>
+      <div class="kicker">Who you're actually hiring</div>
+      <h3>One person, in Melbourne, Florida.</h3>
+      <p>I'm Christian Berry. I write the words myself, from what you send me — the names, the phrases,
+      the year that mattered. The music is produced with AI, and I say so everywhere, including on my own
+      records.</p>
+      <p>We're new, so there are no customer reviews yet. That's exactly why the founding prices are what
+      they are, and why you'll get a first direction back within a day rather than a queue number.
+      You deal with me, not a marketplace.</p>
+      <p class="founder-links"><a href="/label">Hear my own records</a> · <a href="mailto:chris@waxunderdogs.com">chris@waxunderdogs.com</a></p>
+    </div>
+  </div>
+</div></section>
 <section class="sec cat-sec" id="catalog">
   <div class="wrap">
     <div class="sec-head" style="margin-left:auto;margin-right:auto;text-align:center">
       <div class="kicker">The catalog</div>
       <h2 class="sec-title">Hear what a made-for-you song sounds like.</h2>
-      <p style="margin-left:auto;margin-right:auto">Released work from Chris and the artists we produce. Press play.</p>
+      <p style="margin-left:auto;margin-right:auto">These are style samples — songs we wrote to show the range, not customer commissions. Real client songs stay private unless a family asks us to share one.</p>
     </div>
     <div class="tracks" id="tracks">
       <!-- tracks injected by JS -->
@@ -589,11 +615,11 @@ a.occ:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
 
   // ---- Catalog tracks ----
   var CAT=[
-    {t:"Ninety Summers", a:"for Grandma Rose · folk", g:"Folk", s:"audio/ninety-summers.mp3"},
+    {t:"Ninety Summers", a:"example · folk, written for a 90th", g:"Folk", s:"audio/ninety-summers.mp3"},
     {t:"The Long Way Home", a:"Chris Berry", g:"Soul", s:"audio/long-way-home.mp3"},
-    {t:"Two Kids in a Chevy", a:"40th anniversary · country", g:"Country", s:"audio/two-kids-chevy.mp3"},
-    {t:"Little Light", a:"baby's first year · lullaby", g:"Lullaby", s:"audio/little-light.mp3"},
-    {t:"Still Here", a:"in memory · gospel", g:"Gospel", s:"audio/still-here.mp3"}
+    {t:"Two Kids in a Chevy", a:"example · country, a 40th anniversary", g:"Country", s:"audio/two-kids-chevy.mp3"},
+    {t:"Little Light", a:"example · lullaby, baby's first year", g:"Lullaby", s:"audio/little-light.mp3"},
+    {t:"Still Here", a:"example · gospel, written for a memorial", g:"Gospel", s:"audio/still-here.mp3"}
   ];
   var wrap=document.getElementById('tracks');
   CAT.forEach(function(tr){
