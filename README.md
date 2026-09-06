@@ -7,20 +7,17 @@ with its CSS, JS and images inline.
 
 | File | URL |
 |---|---|
-| `index.html` | `/` — the storefront, live since 10 Aug 2026 |
-| `intake.html` | `/intake` — the commission intake flow |
-| `audio/*.mp3` | seven tracks the catalogue players load |
-| `press.html`  | `/press` — press kit (added 4 Sep 2026) |
+| `index.html` | `/` — **the label**: positioning, disclosure standard, artist door, studio section |
+| `studio.html` | `/studio` — the commission storefront, with the catalogue players |
+| `intake.html` | `/intake` — the commission brief form |
+| `press.html`  | `/press` — press kit |
+| `audio/*.mp3` | seven tracks the `/studio` catalogue players load |
+
+The label page leads as of 5 Sep 2026. The storefront it replaced at `/` is
+unchanged apart from its intake link and a back-link to `/`.
 
 `vercel.json` sets `cleanUrls`, so `/press` serves `press.html` without the
 extension.
-
-## Not deployed
-
-`drafts/home.html` — the proposed rewrite of the home page (label positioning,
-disclosure standard, artist roster, studio). Excluded from deployment by
-`.vercelignore`, so it is not reachable on the live site. Two placeholder links
-inside it still need real targets: `/services` and `/intake`.
 
 ## History
 
