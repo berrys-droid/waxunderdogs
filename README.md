@@ -9,6 +9,7 @@ with its CSS, JS and images inline.
 |---|---|
 | `index.html` | `/` — the storefront, live since 10 Aug 2026 |
 | `intake.html` | `/intake` — the commission intake flow |
+| `audio/*.mp3` | seven tracks the catalogue players load |
 | `press.html`  | `/press` — press kit (added 4 Sep 2026) |
 
 `vercel.json` sets `cleanUrls`, so `/press` serves `press.html` without the
@@ -23,11 +24,15 @@ inside it still need real targets: `/services` and `/intake`.
 
 ## History
 
-The live pages had no repository. They were recovered on 5 Sep 2026 from
-browser downloads in `~/Downloads` dated 10 Aug 2026, and committed as
-`current/` and `proposed/` in commit `fad9e0f`. That commit is still the
-archive — those folders were flattened to the root afterwards, so the originals
-are recoverable with `git show fad9e0f:current/index.html`.
+The live pages had no repository. On 5 Sep 2026 they were first recovered from
+loose downloads dated 10 Aug 20:23 — **the wrong version**, whose catalogue
+players synthesised chords with the Web Audio API instead of playing the mp3s.
+Deploying it regressed the live site.
 
-⚠️ The recovered pages are an August snapshot. If the live site was edited on
-Vercel after 10 Aug, this repo is behind it — diff before overwriting.
+The correct source is `~/Downloads/waxunderdogs-site/` (11 Aug 00:38): real
+`index.html`, the intake page, an `audio/` folder of seven mp3s, a `.vercel`
+project link and a `deploy.sh`. That is what this repo now holds.
+
+Vercel project: `waxunderdogs-site` (`prj_hdO49OTMiM97uJivNCfvXtQQi2bf`).
+Previously deployed by `vercel deploy --prod` from that folder; now deployed
+from this repo on push.
