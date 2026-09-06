@@ -21,7 +21,7 @@
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:var(--amber-deep)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
 .nav{padding:22px 0 0}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
@@ -29,6 +29,32 @@ a{color:var(--amber-deep)}
 .nav a.link{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);text-decoration:none}
 .nav a.link:hover{color:var(--amber-deep)}
 .navlinks{display:flex;gap:20px;flex-wrap:wrap}
+
+/* ---- shared site chrome, matched to the home page ---- */
+header.site{position:sticky;top:0;z-index:60;background:rgba(250,247,242,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header.site .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:700;font-size:18px;letter-spacing:-.02em;color:var(--ink)}
+.brand .mark{width:30px;height:30px;border-radius:50%;background:url('art/record-label.png') center/cover no-repeat,var(--amber);flex:none;box-shadow:0 0 0 3px #241a12}
+.brand .b2{color:#6f665c;font-weight:500}
+section[id],div[id]{scroll-margin-top:78px}
+.links{display:flex;align-items:center;gap:28px}
+.links a{text-decoration:none;font-size:15px;color:var(--ink-2);padding:12px 2px;display:inline-flex;align-items:center;min-height:44px}
+.links a:hover{color:var(--ink)}
+.btn-pill{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid transparent;transition:.18s;cursor:pointer}
+.btn-amber{background:var(--amber);color:#fff;padding:11px 20px;font-size:15px}
+.btn-amber:hover{background:var(--amber-deep)}
+.btn-dark{background:var(--ink);color:#fff;padding:15px 30px;font-size:16px}
+.burger{display:none;background:none;border:0;padding:10px;cursor:pointer;min-width:44px;min-height:44px}
+.burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px}
+.sheet{position:fixed;inset:0;z-index:100;background:var(--paper);display:none;flex-direction:column;padding:18px 22px 40px}
+.sheet.open{display:flex}
+.sheet-top{display:flex;align-items:center;justify-content:space-between;height:46px;margin-bottom:22px}
+.sheet-close{background:none;border:0;font-size:30px;line-height:1;cursor:pointer;color:var(--ink);padding:6px 10px}
+.sheet a.row{display:flex;align-items:center;justify-content:space-between;min-height:60px;font-family:var(--serif);font-size:26px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line)}
+.sheet a.row span{color:var(--ink-3);font-size:20px}
+.sheet .btn-dark{margin-top:30px;width:100%}
+.brand:focus-visible,.links a:focus-visible,.btn-pill:focus-visible,.sheet a:focus-visible,.burger:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+@media(max-width:860px){.links{display:none}header.site .btn-amber{display:none}.burger{display:block}}
 
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:center;padding:46px 0 6px}
 .hero-art{position:relative}
@@ -99,7 +125,7 @@ footer .wrap{padding:36px 22px;display:flex;flex-direction:column;gap:10px;font-
 footer a{color:#f0d9b6}
 footer .fine{color:#b6a7ac;font-size:12.5px;max-width:70ch}
 
-@media (max-width:820px){
+@media (max-width:860px){
   .hero{grid-template-columns:1fr;gap:26px;padding-top:30px}
   .hero-art{order:-1}
   .strip .wrap{grid-template-columns:1fr;justify-items:start}
@@ -109,15 +135,33 @@ footer .fine{color:#b6a7ac;font-size:12.5px;max-width:70ch}
 </head>
 <body>
 
-<div class="nav"><div class="wrap nav-inner">
-  <img src="art/wordmark.png" alt="Wax Underdogs">
-  <nav class="navlinks">
-    <a class="link" href="#music">Music</a>
-    <a class="link" href="#artists">For artists</a>
-    <a class="link" href="/studio">Custom songs</a>
-    <a class="link" href="/press">Press</a>
-  </nav>
-</div></div>
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="/"><span class="mark"></span>wax&nbsp;<span class="b2">underdogs</span></a>
+    <nav class="links">
+      <a href="/">Studio</a>
+      <a href="#music">Music</a>
+      <a href="#artists">For artists</a>
+      <a href="/press">Press</a>
+    </nav>
+    <a href="mailto:hello@waxunderdogs.com?subject=Artist%20submission" class="btn-pill btn-amber">Send us a record</a>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sheet" onclick="openSheet()"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="sheet" id="sheet">
+  <div class="wrap" style="padding:0">
+    <div class="sheet-top">
+      <a class="brand" href="/"><span class="mark"></span>wax&nbsp;<span class="b2">underdogs</span></a>
+      <button class="sheet-close" type="button" aria-label="Close menu" onclick="closeSheet()">&times;</button>
+    </div>
+    <a class="row" href="/">Studio &mdash; custom songs <span>&rsaquo;</span></a>
+    <a class="row" href="#music" onclick="closeSheet()">Music <span>&rsaquo;</span></a>
+    <a class="row" href="#artists" onclick="closeSheet()">For artists <span>&rsaquo;</span></a>
+    <a class="row" href="/press">Press <span>&rsaquo;</span></a>
+    <a class="btn-pill btn-dark" href="mailto:hello@waxunderdogs.com?subject=Artist%20submission">Send us a record &nbsp;&rarr;</a>
+  </div>
+</div>
 
 <div class="wrap">
   <section class="hero">
@@ -214,13 +258,14 @@ footer .fine{color:#b6a7ac;font-size:12.5px;max-width:70ch}
           <li>Borrowed or traditional material is named; any real person's voice used in the making has consented in writing.</li>
           <li>You are willing to be corrected in public.</li>
         </ul>
-        <a class="btn" href="mailto:info@waxunderdogs.com?subject=Artist%20submission">Send us a record &rarr;</a>
+        <p style="color:var(--ink-2);margin:0 0 16px">We have not signed anyone but ourselves yet — you would be the first. Terms are set per record, and we tell you the number before you send anything.</p>
+        <a class="btn" href="mailto:hello@waxunderdogs.com?subject=Artist%20submission">Send us a record &rarr;</a>
       </div>
       <div class="lane">
         <h3>A song from your story</h3>
         <p>The studio side: tell us about a person, a marriage, a memory, someone you lost, and we write and produce an original song from it. Voice-clip keepsakes through to multi-track collections.</p>
-        <p style="font-size:14px;color:var(--ink-3)">Past commissions are on the studio page — and you can play them.</p>
-        <a class="btn ghost" href="/studio">Hear the catalogue &rarr;</a>
+        <p style="font-size:14px;color:var(--ink-3)">Keepsake $39 &middot; Signature Song $99 &middot; Collection from $399 — written by Christian, rendered with AI, the same method as the records above. No one has commissioned one yet; the songs on the studio page are examples, and you can play them.</p>
+        <a class="btn-pill btn-amber" href="/">Start a song — from $39 &rarr;</a>
       </div>
     </div>
   </section>
@@ -232,6 +277,7 @@ footer .fine{color:#b6a7ac;font-size:12.5px;max-width:70ch}
     <a href="https://open.spotify.com/artist/1pkgCx82g0L8nBhw0Wi1aW">Spotify</a> &middot;
     <a href="https://www.youtube.com/channel/UCrxHqluMxF6qGNQ8I5q6EqQ">YouTube</a> &middot;
     <a href="https://instagram.com/waxunderdogs">Instagram</a> &middot;
+    <a href="/">Custom songs</a> &middot;
     <a href="/press">Press kit</a> &middot;
     <a href="mailto:hello@waxunderdogs.com">hello@waxunderdogs.com</a>
   </div>
@@ -266,6 +312,12 @@ footer .fine{color:#b6a7ac;font-size:12.5px;max-width:70ch}
     });
   });
 })();
+</script>
+<script>
+var sheetEl=document.getElementById('sheet'), burgerEl=document.querySelector('.burger');
+function openSheet(){sheetEl.classList.add('open');document.body.style.overflow='hidden';burgerEl.setAttribute('aria-expanded','true');sheetEl.querySelector('.sheet-close').focus()}
+function closeSheet(){sheetEl.classList.remove('open');document.body.style.overflow='';burgerEl.setAttribute('aria-expanded','false');burgerEl.focus()}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sheetEl.classList.contains('open'))closeSheet()});
 </script>
 </body>
 </html>
