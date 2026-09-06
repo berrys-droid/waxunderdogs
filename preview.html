@@ -78,6 +78,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(250,247,242,.86);backdro
     repeating-radial-gradient(circle at 50% 50%, #241a12 0 1.5px, #17100a 1.5px 3px);
   box-shadow:var(--shadow-lg),0 0 0 1px rgba(0,0,0,.35);transition:transform .25s}
 .record:hover{transform:scale(1.02)}
+.record:focus-visible,.track:focus-visible,.occ:focus-visible,.btn:focus-visible,.sheet a:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
 .record::before{content:"";position:absolute;inset:31%;border-radius:50%;background:url('art/record-label.png') center/cover no-repeat,var(--amber);box-shadow:0 0 0 1px rgba(0,0,0,.45),inset 0 0 14px rgba(0,0,0,.18)}
 .record::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--paper);z-index:3}
 .record-wrap{position:relative}
@@ -107,6 +108,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(250,247,242,.86);backdro
 .tier .btn{width:100%}
 .howmade{margin-top:34px;font-size:14px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;max-width:74ch}
 .howmade b{color:var(--ink)}
+.noPay{margin-top:26px;font-size:15px;font-weight:600;color:var(--ink)}
 .tiny{font-size:13px;color:var(--ink-3);margin-top:18px}
 
 /* ---------- FOUNDER RAIL, beside the choices ---------- */
@@ -137,7 +139,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(250,247,242,.86);backdro
 /* ---------- TRACKS ---------- */
 .tracks{margin-top:44px;border-top:1px solid var(--line)}
 .track{display:flex;align-items:center;gap:16px;padding:18px 4px;border-bottom:1px solid var(--line);cursor:pointer;background:none;border-left:0;border-right:0;border-top:0;width:100%;text-align:left;font-family:inherit}
-.tplay{width:44px;height:44px;border-radius:50%;flex:none;position:relative;display:flex;align-items:center;justify-content:center;
+.tplay{width:48px;height:48px;border-radius:50%;flex:none;position:relative;display:flex;align-items:center;justify-content:center;
   background-image:
     radial-gradient(circle at 50% 50%, rgba(255,255,255,.10) 0 1px, transparent 1px),
     repeating-radial-gradient(circle at 50% 50%, #241a12 0 1.5px, #17100a 1.5px 3px)}
@@ -196,7 +198,7 @@ footer a{color:var(--ink-2)}
       <a href="/label">The label</a>
     </nav>
     <a href="#prices" class="btn btn-amber">Start a song</a>
-    <button class="burger" aria-label="Menu" onclick="document.getElementById('sheet').classList.add('open')"><span></span><span></span><span></span></button>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sheet" onclick="openSheet()"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -204,13 +206,13 @@ footer a{color:var(--ink-2)}
   <div class="wrap" style="padding:0">
     <div class="sheet-top">
       <a class="brand" href="#top"><span class="mark"></span>wax&nbsp;<span class="b2">underdogs</span></a>
-      <button class="sheet-close" aria-label="Close" onclick="document.getElementById('sheet').classList.remove('open')">&times;</button>
+      <button class="sheet-close" type="button" aria-label="Close menu" onclick="closeSheet()">&times;</button>
     </div>
     <a class="row" href="#prices" onclick="closeSheet()">Prices <span>&rsaquo;</span></a>
     <a class="row" href="#occasions" onclick="closeSheet()">Occasions <span>&rsaquo;</span></a>
     <a class="row" href="#catalog" onclick="closeSheet()">Hear more <span>&rsaquo;</span></a>
-    <a class="row" href="/label">The label <span>&rsaquo;</span></a>
-    <a class="row" href="/press">Press <span>&rsaquo;</span></a>
+    <a class="row" href="/label" onclick="closeSheet()">The label <span>&rsaquo;</span></a>
+    <a class="row" href="/press" onclick="closeSheet()">Press <span>&rsaquo;</span></a>
     <a class="btn btn-dark" href="/intake">Start a song &nbsp;&rarr;</a>
   </div>
 </div>
@@ -226,10 +228,10 @@ footer a{color:var(--ink-2)}
 
     <div class="record-wrap">
       <span class="rec-holder">
-        <button class="record" id="rec" aria-label="Play a sample"></button>
+        <button class="record" id="rec" type="button" aria-label="Play a 30-second sample of Ninety Summers" aria-pressed="false"></button>
         <span class="cue" id="cue"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <p class="rec-cap"><b>Ninety Summers</b> — folk, written for a 90th<span class="ex">example</span></p>
+      <p class="rec-cap"><b>Ninety Summers</b> — folk, written to show a 90th-birthday song<span class="ex">example</span></p>
       <p class="rec-hint">Tap the record to hear it.</p>
     </div>
   </div>
@@ -240,13 +242,13 @@ footer a{color:var(--ink-2)}
   <div class="wrap center">
     <div class="kicker">The menu</div>
     <h2 class="sec-title">Three ways to do it.</h2>
-    <p class="sec-sub">Founding prices while we build the catalogue — a real, made-for-them song for under half what the big custom-song sites charge.</p>
+    <p class="sec-sub">Founding prices while we build the catalogue. They go up once there is a shelf of finished work.</p>
 
     <div class="buy">
       <div class="who">
-        <img class="portrait" src="art/portrait.jpg" alt="Christian Berry">
+        <img class="portrait" width="500" height="625" src="art/portrait.jpg" alt="Christian Berry">
         <div class="headshot-row">
-          <img src="art/portrait.jpg" alt="Christian Berry">
+          <img loading="lazy" width="164" height="164" src="art/portrait.jpg" alt="Christian Berry">
           <div>
             <div class="kicker" style="margin-bottom:4px">Who you're hiring</div>
             <div style="font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.2">One person, in Melbourne, Florida.</div>
@@ -265,16 +267,16 @@ footer a{color:var(--ink-2)}
           <div class="price">$39</div>
           <div class="per">from</div>
           <p>A 30&ndash;60 second piece built from one real voice clip — a saved voicemail, a "happy birthday" on an old machine — cleaned up and set to music.</p>
-          <a href="/intake?package=Keepsake" class="btn btn-ghost">Choose this</a>
+          <a href="/intake?package=Keepsake" class="btn btn-ghost">Start the Keepsake &rarr;</a>
         </div>
         <div class="tier best">
-          <div class="tag">Most loved</div>
+          <div class="tag">Start here</div>
           <h3>The Signature Song</h3>
           <div class="sub">memory song</div>
           <div class="price">$99</div>
           <div class="per">one full original</div>
           <p>A complete 2.5&ndash;4 minute song written from your story. Your names, your moments, your genre. Revisions until it's right, mastered file, and a lyric sheet.</p>
-          <a href="/intake?package=Signature%20Song" class="btn btn-dark">Choose this</a>
+          <a href="/intake?package=Signature%20Song" class="btn btn-dark">Start the Signature Song &rarr;</a>
         </div>
         <div class="tier">
           <h3>The Collection</h3>
@@ -282,11 +284,12 @@ footer a{color:var(--ink-2)}
           <div class="price">$399</div>
           <div class="per">and up</div>
           <p>Four to eight custom tracks around one person, couple, or family — a life told across songs. Intake session, cover art, sequencing, private album page.</p>
-          <a href="/intake?package=Collection" class="btn btn-ghost">Choose this</a>
+          <a href="/intake?package=Collection" class="btn btn-ghost">Start a Collection &rarr;</a>
         </div>
       </div>
     </div>
 
+    <p class="noPay">No payment on the next page. Tell me who it is for, and I will send a first direction before you pay.</p>
     <div class="howmade" style="margin-left:auto;margin-right:auto;text-align:left">
       <b>How they are made:</b> a real songwriter writes the words from your story — then the music is produced with AI. Any real voice clip you send stays your own recording, used with your consent. We never pass off a synthetic voice as someone's real one.
     </div>
@@ -313,12 +316,12 @@ footer a{color:var(--ink-2)}
     <div class="kicker">What people order</div>
     <h2 class="sec-title">A song for the moment you can't put into words.</h2>
     <div class="occ-grid">
-      <a class="occ" href="/intake?occasion=Milestone%20birthday"><img src="art/occasions/birthday.jpg" alt=""><span class="lab">Birthday</span></a>
-      <a class="occ" href="/intake?occasion=Anniversary"><img src="art/occasions/anniversary.jpg" alt=""><span class="lab">Anniversary</span></a>
-      <a class="occ" href="/intake?occasion=Wedding%20/%20first%20dance"><img src="art/occasions/wedding.jpg" alt=""><span class="lab">Wedding</span></a>
-      <a class="occ" href="/intake?occasion=Memorial%20/%20tribute"><img src="art/occasions/memorial.jpg" alt=""><span class="lab">Memorial</span></a>
-      <a class="occ" href="/intake?occasion=New%20baby%20/%20baby%27s%20first%20year"><img src="art/occasions/baby.jpg" alt=""><span class="lab">New baby</span></a>
-      <a class="occ" href="/intake?occasion=Missing%20someone"><img src="art/occasions/missing.jpg" alt=""><span class="lab">Missing someone</span></a>
+      <a class="occ" href="/intake?occasion=Milestone%20birthday" aria-label="Start a birthday song"><img loading="lazy" width="600" height="600" src="art/occasions/birthday.jpg" alt=""><span class="lab">Birthday</span></a>
+      <a class="occ" href="/intake?occasion=Anniversary" aria-label="Start an anniversary song"><img loading="lazy" width="600" height="600" src="art/occasions/anniversary.jpg" alt=""><span class="lab">Anniversary</span></a>
+      <a class="occ" href="/intake?occasion=Wedding%20/%20first%20dance" aria-label="Start a wedding song"><img loading="lazy" width="600" height="600" src="art/occasions/wedding.jpg" alt=""><span class="lab">Wedding</span></a>
+      <a class="occ" href="/intake?occasion=Memorial%20/%20tribute" aria-label="Start a memorial song"><img loading="lazy" width="600" height="600" src="art/occasions/memorial.jpg" alt=""><span class="lab">Memorial</span></a>
+      <a class="occ" href="/intake?occasion=New%20baby%20/%20baby%27s%20first%20year" aria-label="Start a new baby song"><img loading="lazy" width="600" height="600" src="art/occasions/baby.jpg" alt=""><span class="lab">New baby</span></a>
+      <a class="occ" href="/intake?occasion=Missing%20someone" aria-label="Start a song for someone you miss"><img loading="lazy" width="600" height="600" src="art/occasions/missing.jpg" alt=""><span class="lab">Missing someone</span></a>
     </div>
     <p class="occ-more">Also graduation, Mother's Day, Father's Day, thank you, I'm sorry, pet tribute, voicemail rescue and just because — <a href="/intake">pick yours on the form &rarr;</a></p>
   </div>
@@ -339,7 +342,7 @@ footer a{color:var(--ink-2)}
   <div class="wrap">
     <h2>The people who matter deserve more than a card.</h2>
     <p>One song, written for one person, from the things only you know about them.</p>
-    <a href="/intake" class="btn btn-amber">Start a song &nbsp;&rarr;</a>
+    <a href="/intake?package=Signature%20Song" class="btn btn-amber">Start a song &nbsp;&rarr;</a>
   </div>
 </section>
 
@@ -363,7 +366,10 @@ footer a{color:var(--ink-2)}
 </footer>
 
 <script>
-function closeSheet(){document.getElementById('sheet').classList.remove('open')}
+var sheetEl=document.getElementById('sheet'), burgerEl=document.querySelector('.burger');
+function openSheet(){sheetEl.classList.add('open');document.body.style.overflow='hidden';burgerEl.setAttribute('aria-expanded','true');sheetEl.querySelector('.sheet-close').focus()}
+function closeSheet(){sheetEl.classList.remove('open');document.body.style.overflow='';burgerEl.setAttribute('aria-expanded','false');burgerEl.focus()}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sheetEl.classList.contains('open'))closeSheet()});
 
 /* one audio element for the whole page */
 var A=new Audio(), curBtn=null;
@@ -381,14 +387,14 @@ document.getElementById('rec').addEventListener('click',function(){
   var was=curBtn===this;
   play('audio/ninety-summers.mp3',this,'playing');
   var c=document.getElementById('cue');
-  if(!was){c.classList.add('on');c.innerHTML=PAUSE}
+  if(!was){c.classList.add('on');c.innerHTML=PAUSE;this.setAttribute('aria-pressed','true')}else{this.setAttribute('aria-pressed','false')}
 });
 
 var CAT=[
- {t:"The Long Way Home", a:"example · soul", g:"Soul", s:"audio/long-way-home.mp3"},
- {t:"Two Kids in a Chevy", a:"example · country, a 40th anniversary", g:"Country", s:"audio/two-kids-chevy.mp3"},
- {t:"Little Light", a:"example · lullaby, baby's first year", g:"Lullaby", s:"audio/little-light.mp3"},
- {t:"Still Here", a:"example · gospel, written for a memorial", g:"Gospel", s:"audio/still-here.mp3"}
+ {t:"The Long Way Home", a:"example · soul, written to show the range", g:"Soul", s:"audio/long-way-home.mp3"},
+ {t:"Two Kids in a Chevy", a:"example · country, written to show a 40th-anniversary song", g:"Country", s:"audio/two-kids-chevy.mp3"},
+ {t:"Little Light", a:"example · lullaby, written to show a first-year song", g:"Lullaby", s:"audio/little-light.mp3"},
+ {t:"Still Here", a:"example · gospel, written to show a memorial song", g:"Gospel", s:"audio/still-here.mp3"}
 ];
 var wrap=document.getElementById('tracks');
 CAT.forEach(function(tr){
